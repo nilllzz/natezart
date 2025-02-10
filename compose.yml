@@ -1,0 +1,26 @@
+services:
+  web1:
+    restart: on-failure
+    build: ./web
+    hostname: web1
+  web2:
+    restart: on-failure
+    build: ./web
+    hostname: web2
+
+  nginx:
+    build: ./nginx
+    ports:
+      - '8080:80'
+#      - '8081:443'
+    depends_on:
+      - web1
+#    secrets:
+#      - ssl_cert
+#      - ssl_key
+
+#secrets:
+#  ssl_cert:
+#    file: ./keys/natez.art.crt
+#  ssl_key:
+#    file: ./keys/natez.art.key
