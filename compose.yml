@@ -3,16 +3,20 @@ services:
     restart: on-failure
     build: ./web
     hostname: web1
+    volumes:
+      - ./web:/var/www/html
   web2:
     restart: on-failure
     build: ./web
     hostname: web2
+    volumes:
+      - ./web:/var/www/html
 
   nginx:
     build: ./nginx
     ports:
-      - '8080:80'
-#      - '8081:443'
+      - "8080:80"
+    #      - '8081:443'
     depends_on:
       - web1
 #    secrets:
