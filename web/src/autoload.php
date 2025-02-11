@@ -12,5 +12,5 @@ spl_autoload_register(callback: function (string $qualifiedClassName): void {
 
     $path = DIRECTORY_SEPARATOR . implode(DIRECTORY_SEPARATOR, $namespacedParts) . '.php';
 
-    require_once __DIR__ . $path;
+    require_once $GLOBALS['ROOT'] . $path;
 });

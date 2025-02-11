@@ -1,16 +1,27 @@
 services:
+  redis:
+    restart: on-failure
+    build: ./redis
+    hostname: redis
+    ports:
+      - "6379:6379"
+
   web1:
     restart: on-failure
     build: ./web
     hostname: web1
     volumes:
       - ./web:/var/www/html
+    depends_on:
+      - redis
   web2:
     restart: on-failure
     build: ./web
     hostname: web2
     volumes:
       - ./web:/var/www/html
+    depends_on:
+      - redis
 
   nginx:
     build: ./nginx

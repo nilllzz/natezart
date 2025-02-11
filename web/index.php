@@ -2,10 +2,13 @@
 
 use Natezart\Router;
 
+// Main program entrypoint.
+// Set up basic global variables and run the Router.
+
 $GLOBALS['ROOT'] = __DIR__;
 
 // Register autoloader:
-require_once $GLOBALS['ROOT'] . '/autoload.php';
+require_once $GLOBALS['ROOT'] . '/src/autoload.php';
 
 final class Program
 {
